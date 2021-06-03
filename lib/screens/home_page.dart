@@ -6,8 +6,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         body: SafeArea(
             child: Container(
-                height: 100,
-                width: 100,
+                height: 50,
+                width: 50,
                 color: Colors.red,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
