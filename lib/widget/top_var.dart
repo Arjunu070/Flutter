@@ -1,48 +1,46 @@
+import 'package:bootcamp/widgets/top_var.dart';
 import 'package:flutter/material.dart';
 
-class TopBar extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final Color color;
-
-  TopBar({
-    required this.subtitle,
-    required this.title,
-    required this.color,
-  });
+class HomepageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 44, horizontal: 23),
-      width: double.infinity,
-      color: color,
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: NetworkImage(
-                'https://images.unsplash.com/photo-1622735206517-d46c4f0d2502?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80'),
-          ),
-          const SizedBox(width: 10),
-          Column(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
+              TopBar(
+                title: 'Arjun',
+                subtitle: 'Developer',
+                color: Color(0xff0B3D2E),
               ),
+              const SizedBox(height: 10),
               Text(
-                subtitle,
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                'Photograpghy',
+                style: TextStyle(fontSize: 22, color: Color(0xff0B3D2E)),
               ),
+              const SizedBox(height: 10),
+              GridView.builder(
+                padding: EdgeInsets.all(10),
+                itemCount: 4,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2),
+                itemBuilder: (ctx, index) => Container(
+                  child: Image.network(
+                    'https://images.unsplash.com/photo-1622735206517-d46c4f0d2502?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )
             ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
-
